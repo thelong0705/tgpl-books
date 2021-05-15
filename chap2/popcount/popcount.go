@@ -8,7 +8,7 @@ func init() {
 	}
 }
 
-// CountByLoop ex 2.4
+// CountByLoop exercise 2.4
 func CountByLoop(x uint64) (count int) {
 	for i := 0; i < 64; i++ {
 		count += int(x & 1)
@@ -17,6 +17,7 @@ func CountByLoop(x uint64) (count int) {
 	return count
 }
 
+// CountByTable example
 func CountByTable(x uint64) (count int) {
 	return int(
 		pc[byte(x>>(0*8))] +
@@ -28,4 +29,14 @@ func CountByTable(x uint64) (count int) {
 			pc[byte(x>>(6*8))] +
 			pc[byte(x>>(7*8))],
 	)
+}
+
+// CountByClearRightMost exercise 2.5
+func CountByClearRightMost(x uint64) (count int) {
+	for x > 0 {
+		x = x & (x - 1)
+		count++
+	}
+
+	return count
 }

@@ -37,3 +37,11 @@ func TestPopCountTable(t *testing.T) {
 		}
 	}
 }
+
+func TestPopCountClearRightMost(t *testing.T) {
+	for _, testCase := range testCases {
+		if CountByClearRightMost(testCase.input) != testCase.want {
+			t.Errorf("want %d got %d", testCase.input, testCase.want)
+		}
+	}
+}
