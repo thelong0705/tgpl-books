@@ -1,6 +1,9 @@
 package comma
 
-import "bytes"
+import (
+	"bytes"
+	"strings"
+)
 
 func comma(s string) string {
 	for i := len(s) - 3; i > 0; i = i - 3 {
@@ -30,4 +33,20 @@ func commaWithByteBuffer(s string) string {
 	}
 
 	return buf.String()
+}
+
+func forFloatComma(s string) string {
+	dot := strings.LastIndex(s, ".")
+	var floatPart string
+	var sign string
+	if dot != -1 {
+		floatPart = s[dot:]
+		s = s[0:dot]
+	}
+	if s[0] == '+' || s[0] == '-' {
+		sign = s[0:1]
+		s = s[1:]
+	}
+
+	return sign + commaWithByteBuffer(s) + floatPart
 }
