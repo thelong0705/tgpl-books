@@ -32,7 +32,7 @@ func TestComma(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		got := comma(testCase.input)
+		got := commaWithByteBuffer(testCase.input)
 
 		if got != testCase.output {
 			t.Errorf("expected %s got %s", testCase.output, got)
