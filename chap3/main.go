@@ -1,9 +1,19 @@
 package main
 
 import (
-	"chap3/basename"
+	"fmt"
+)
+
+
+type Currency int
+const (
+	USD Currency = iota
+	EUR
+	GBP
+	RMB
 )
 
 func main()  {
-	basename.Hello()
+	symbol := [...]string{RMB: "d", USD: "a", EUR: "b", GBP: "c" }
+	fmt.Println(RMB, symbol[RMB])
 }

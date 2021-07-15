@@ -40,3 +40,10 @@ func CountByClearRightMost(x uint64) (count int) {
 
 	return count
 }
+
+
+7: 0111
+4: 0100
+
+7 & 4 = 0100
+7 & ans = 0
