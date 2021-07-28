@@ -1,25 +1,33 @@
 package main
 
 import (
-	"crypto/sha256"
-	"crypto/sha512"
-	"flag"
 	"fmt"
 )
 
 func main() {
-	shaOptPtr := flag.String("sha-opt", "256", "sha option. Its option are 384, 512 otherwise default to 256")
-	target := flag.String("target", "", "a string")
-	flag.Parse()
-
-	switch shaOpt := *shaOptPtr; shaOpt {
-	case "384":
-		fmt.Printf("%x \n", sha512.Sum384([]byte(*target)))
-	case "512":
-		fmt.Printf("%x \n", sha512.Sum512([]byte(*target)))
-	default:
-		fmt.Printf("%x \n", sha256.Sum256([]byte(*target)))
+	var x, y []int
+	for i := 0; i < 10; i++ {
+		y = appendInt(x, i)
+		fmt.Printf("%d cap=%d\t%v\n", i, cap(y), y)
 	}
+}
 
-
+func appendInt(x []int, y int) []int {
+	var z []int
+	zlen := len(x) + 1
+	if zlen <= cap(x) {
+		// There is room to grow.  Extend the slice.
+		z = x[:zlen]
+	} else {
+		// There is insufficient space.  Allocate a new array.
+		// Grow by doubling, for amortized linear complexity.
+		zcap := zlen
+		if zcap < 2*len(x) {
+			zcap = 2 * len(x)
+		}
+		z = make([]int, zlen, zcap)
+		copy(z, x) // a built-in function; see text
+	}
+	z[len(x)] = y
+	return z
 }
