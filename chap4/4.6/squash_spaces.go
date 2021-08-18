@@ -4,7 +4,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 )
-
+// SquashSpaces Write an in-place function that squashes each run of adjacent Unicode spaces
+// in a UTF-8-encoded []byte slice into a single ASCII space.
 func SquashSpaces(input []byte) []byte {
 	lastSize := 0
 	sizeCounter := 0
