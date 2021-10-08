@@ -14,11 +14,18 @@ func main() {
 	if err != nil {
 		log.Fatalf("error when fetching url: %v", err)
 	}
-	fisrtLink, err := findlinks1.FindFirstLink(res)
+	firstLink, err := findlinks1.FindFirstLink(res)
 	if err != nil {
-		log.Fatalf("error when find link for this %s url: %v", fisrtLink, err)
+		log.Fatalf("error when find link for this %s url: %v", url, err)
 	}
-	fmt.Println(fisrtLink)
+	fmt.Println(firstLink)
+
+	allLinks, err := findlinks1.FindAllLinks(res)
+	if err != nil {
+		log.Fatalf("error when find link for this %s url: %v", url, err)
+	}
+
+	fmt.Println(allLinks)
 }
 
 //go run main.go https://golang.com
