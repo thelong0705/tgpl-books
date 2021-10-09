@@ -3,6 +3,7 @@ package main
 import (
 	"chap5/fetch"
 	"chap5/findlinks1"
+	"chap5/outline"
 	"fmt"
 	"log"
 	"os"
@@ -18,6 +19,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("error when find link for this %s url: %v", url, err)
 	}
+	fmt.Println("First link of html: ")
 	fmt.Println(firstLink)
 
 	allLinks, err := findlinks1.FindAllLinks(res)
@@ -25,7 +27,13 @@ func main() {
 		log.Fatalf("error when find link for this %s url: %v", url, err)
 	}
 
+	fmt.Println("All links of html: ")
 	fmt.Println(allLinks)
+
+
+	fmt.Println("Outline: ")
+	outline.Outline(res)
+
 }
 
 //go run main.go https://golang.com
