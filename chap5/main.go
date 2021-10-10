@@ -5,6 +5,7 @@ import (
 	"chap5/findlinks1"
 	"chap5/findlinks2"
 	"chap5/outline"
+	"chap5/wait"
 	"fmt"
 	"log"
 	"os"
@@ -41,6 +42,12 @@ func main() {
 
 	fmt.Println("All links of html: ")
 	fmt.Println(allLinks)
+
+	badUrl := "https://bad.golang.io"
+	err = wait.WaitForServer(badUrl)
+	if err != nil {
+		log.Fatalf("Site is down %v", err)
+	}
 
 }
 
