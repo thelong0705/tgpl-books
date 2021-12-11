@@ -35,7 +35,10 @@ func echo(c net.Conn, shout string, delay time.Duration) {
 
 func handleConn(c net.Conn) {
 	input := bufio.NewScanner(c)
+	fmt.Println("scanning")
 	for input.Scan() {
+		fmt.Println("test")
+		fmt.Println(input.Text())
 		go echo(c, input.Text(), 1 * time.Second)
 	}
 	c.Close()
