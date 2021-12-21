@@ -44,6 +44,7 @@ func main() {
 		close(filesizes)
 	}()
 	var nfiles, nsizes int64
+
 	for filesize := range filesizes {
 		nfiles++
 		nsizes += filesize
