@@ -6,18 +6,20 @@ package memo_test
 import (
 	memo "chap9/memo1"
 	"chap9/memotest"
+	"fmt"
 	"testing"
 )
 
 var httpGetBody = memotest.HTTPGetBody
 
 func Test(t *testing.T) {
+	fmt.Println("test")
 	m := memo.New(httpGetBody)
 	memotest.Sequential(t, m)
 }
 
-// NOTE: not concurrency-safe!  Test fails.
 func TestConcurrent(t *testing.T) {
+	fmt.Println("concurrent")
 	m := memo.New(httpGetBody)
 	memotest.Concurrent(t, m)
 }
